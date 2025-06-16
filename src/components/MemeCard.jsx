@@ -1,19 +1,12 @@
 
 import { useState } from 'react';
-import { Meme } from '@/types/meme';
 import { ChevronUp, ChevronDown, DollarSign, Zap, User } from 'lucide-react';
 
-interface MemeCardProps {
-  meme: Meme;
-  onVote: (memeId: string, type: 'up' | 'down') => void;
-  onBid: (memeId: string, credits: number) => void;
-}
-
-const MemeCard = ({ meme, onVote, onBid }: MemeCardProps) => {
+const MemeCard = ({ meme, onVote, onBid }) => {
   const [bidAmount, setBidAmount] = useState('');
   const [isGlitching, setIsGlitching] = useState(false);
 
-  const handleVote = (type: 'up' | 'down') => {
+  const handleVote = (type) => {
     setIsGlitching(true);
     setTimeout(() => setIsGlitching(false), 300);
     onVote(meme.id, type);

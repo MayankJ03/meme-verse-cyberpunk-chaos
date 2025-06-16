@@ -1,12 +1,7 @@
 
-import { Meme } from '@/types/meme';
 import { Trophy, TrendingUp, Zap } from 'lucide-react';
 
-interface LeaderboardProps {
-  memes: Meme[];
-}
-
-const Leaderboard = ({ memes }: LeaderboardProps) => {
+const Leaderboard = ({ memes }) => {
   const topMemes = [...memes]
     .sort((a, b) => (b.upvotes - b.downvotes) - (a.upvotes - a.downvotes))
     .slice(0, 5);

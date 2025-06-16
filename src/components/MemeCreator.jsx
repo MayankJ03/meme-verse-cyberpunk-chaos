@@ -2,17 +2,13 @@
 import { useState } from 'react';
 import { Plus, Sparkles } from 'lucide-react';
 
-interface MemeCreatorProps {
-  onCreateMeme: (meme: { title: string; image_url: string; tags: string[] }) => void;
-}
-
-const MemeCreator = ({ onCreateMeme }: MemeCreatorProps) => {
+const MemeCreator = ({ onCreateMeme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [tagsInput, setTagsInput] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     if (!title.trim()) return;

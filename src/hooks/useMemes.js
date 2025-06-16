@@ -1,20 +1,19 @@
 
 import { useState, useEffect } from 'react';
-import { mockMemes, mockCaptions, mockVibes } from '@/lib/mockData';
-import { Meme } from '@/types/meme';
+import { mockMemes, mockCaptions, mockVibes } from '../lib/mockData';
 
 export const useMemes = () => {
-  const [memes, setMemes] = useState<Meme[]>(mockMemes);
+  const [memes, setMemes] = useState(mockMemes);
   const [isLoading, setIsLoading] = useState(false);
 
-  const createMeme = async (memeData: { title: string; image_url: string; tags: string[] }) => {
+  const createMeme = async (memeData) => {
     setIsLoading(true);
     
     // Simulate AI caption generation
     const randomCaption = mockCaptions[Math.floor(Math.random() * mockCaptions.length)];
     const randomVibe = mockVibes[Math.floor(Math.random() * mockVibes.length)];
     
-    const newMeme: Meme = {
+    const newMeme = {
       id: Date.now().toString(),
       title: memeData.title,
       image_url: memeData.image_url,
@@ -36,7 +35,7 @@ export const useMemes = () => {
     }, 1000);
   };
 
-  const voteMeme = (memeId: string, type: 'up' | 'down') => {
+  const voteMeme = (memeId, type) => {
     setMemes(prev => prev.map(meme => {
       if (meme.id === memeId) {
         return {
@@ -49,7 +48,7 @@ export const useMemes = () => {
     }));
   };
 
-  const bidMeme = (memeId: string, credits: number) => {
+  const bidMeme = (memeId, credits) => {
     setMemes(prev => prev.map(meme => {
       if (meme.id === memeId && credits > (meme.current_bid || 0)) {
         return {
