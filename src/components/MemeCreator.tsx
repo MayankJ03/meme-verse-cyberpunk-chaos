@@ -49,7 +49,7 @@ const MemeCreator = ({ onCreateMeme }: MemeCreatorProps) => {
   return (
     <div className="cyber-card mb-6 border-cyber-green/50">
       <div className="terminal-text text-cyber-green mb-4 font-bold">
-        > INITIALIZING MEME CREATION PROTOCOL...
+        {'>'} INITIALIZING MEME CREATION PROTOCOL...
       </div>
       
       <form onSubmit={handleSubmit} className="space-y-4">
