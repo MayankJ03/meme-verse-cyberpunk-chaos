@@ -33,12 +33,13 @@ const MemeCard = ({ meme, onVote, onBid }) => {
         </div>
       </div>
 
-      {/* Image */}
-      <div className="relative mb-4 rounded-lg overflow-hidden border border-cyber-blue/20">
+      {/* Image - Fixed sizing */}
+      <div className="relative mb-4 rounded-lg overflow-hidden border border-cyber-blue/20 w-full h-48">
         <img 
           src={meme.image_url} 
           alt={meme.title}
-          className="w-full h-48 object-cover"
+          className="w-full h-full object-cover object-center"
+          style={{ maxWidth: '100%', maxHeight: '100%' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       </div>
